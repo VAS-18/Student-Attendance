@@ -7,13 +7,13 @@ const Dashboard = () => {
 
     const { setTheme } = useTheme()
 
-    useEffect(()=>{
+    useEffect(() => {
         setTheme('Dark');
-    },[])
+    }, [])
 
     return (
-        <div>
-            page
+        <div className='text-xl font-bold p-5'>
+            Dashboard
         </div>
     )
 }

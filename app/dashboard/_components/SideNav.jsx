@@ -1,5 +1,6 @@
 import { GraduationCap, Hand, Icon, LayoutIcon, Settings } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const SideNav = () => {
@@ -46,6 +47,7 @@ const SideNav = () => {
             <hr className='my-5'/>
 
             {menuList.map((menu,index) => (
+                <Link href={menu.path}>
                 <h2 className='flex items-center gap-3 text-md p-4
                 text-slate-500
                 hover:bg-red-700
@@ -55,6 +57,7 @@ const SideNav = () => {
                     <menu.Icon></menu.Icon>
                     {menu.name}
                 </h2>
+                </Link>
             ))}
         </div>
     )
