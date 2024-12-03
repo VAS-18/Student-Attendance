@@ -14,3 +14,15 @@ export const STUDENTS = pgTable("students", {
   rollno: integer('rno').notNull().unique(),
   branch:varchar('branch',{length: 255 }).notNull()
 });
+
+
+export const BRANCH = pgTable("Branch",{
+  id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
+  branchname: varchar('branchname',{length: 255 }).notNull()
+})
+
+export const Internal = pgTable("Branch",{
+  id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
+  subject: varchar('branchname',{length: 255 }).notNull(),
+
+})
