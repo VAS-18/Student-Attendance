@@ -1,6 +1,6 @@
 "use client"
 import { Button } from '@/components/ui/button'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form";
 import {
@@ -11,11 +11,20 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import GlobalApi from '@/app/_services/GlobalApi';
 
 const AddNewStudent = () => {
     const [open, setOpen] = useState(false);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    useEffect(() =>{
+        getAllbranchList();
+    },[])
 
+    const getAllbranchList = () =>{
+        GlobalApi.GetAllBranch().then(res => {
+            console.log(res.data);
+        })
+    }
 
     const onSubmit = (data) => {
         console.log("Form Data", data);
