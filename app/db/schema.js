@@ -20,9 +20,3 @@ export const BRANCH = pgTable("Branch",{
   id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
   branchname: varchar('branchname',{length: 255 }).notNull()
 });
-
-export const Internal = pgTable("Branch",{
-  id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
-  subject: varchar('branchname',{length: 255 }).notNull(),
-
-});
