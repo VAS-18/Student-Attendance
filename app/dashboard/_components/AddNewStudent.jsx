@@ -30,6 +30,7 @@ const AddNewStudent = () => {
         try {
             const response = await GlobalApi.GetAllBranch();
             setBranch(response.data);
+            console.log(response.data);
         } catch (error) {
             setError(error.message);
         }
@@ -38,7 +39,6 @@ const AddNewStudent = () => {
     const onSubmit = async (data) => {
         try {
             setLoading(true);
-            // Add your API call to save the student data here
             console.log("Form Data", data);
         } catch (error) {
             setError(error.message);

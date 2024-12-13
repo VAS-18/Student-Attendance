@@ -6,9 +6,6 @@ import GlobalApi from '@/app/_services/GlobalApi'
 import StudentList from '../_components/StudentList'
 
 
-
-
-
 const Student = () => {
 
   const [studentList, setStudentList] = useState([]);
@@ -21,7 +18,7 @@ const Student = () => {
    
     GlobalApi.GetAllStudents().then(response => {
       console.log(response.data);
-      setStudentList(response.data); // Set the fetched data to state
+      setStudentList(response.data);
     })
 
   }
@@ -33,8 +30,6 @@ const Student = () => {
         Students
         <AddNewStudent/>
       </h2>
-
-      {/* <StudentList studentList={studentList} /> */}
     </div>
   )
 }
