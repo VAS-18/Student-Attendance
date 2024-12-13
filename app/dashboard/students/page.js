@@ -15,7 +15,7 @@ const Student = () => {
 
   useEffect(()=>{
     GetAllStudent();
-  })
+  },[])
 
   const GetAllStudent = () => {
    
@@ -34,7 +34,7 @@ const Student = () => {
         <AddNewStudent/>
       </h2>
 
-      <StudentList studentList={studentList} />
+      {/* <StudentList studentList={studentList} /> */}
     </div>
   )
 }
