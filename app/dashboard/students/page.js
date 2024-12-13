@@ -8,6 +8,7 @@ import StudentList from '../_components/StudentList'
 
 
 
+
 const Student = () => {
 
   const [studentList, setStudentList] = useState([]);
@@ -20,6 +21,7 @@ const Student = () => {
    
     GlobalApi.GetAllStudents().then(response => {
       console.log(response.data);
+      setStudentList(response.data); // Set the fetched data to state
     })
 
   }
