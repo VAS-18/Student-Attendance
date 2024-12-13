@@ -20,30 +20,34 @@ const AddNewStudent = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
 
     useEffect(() => {
         getAllbranchList();
     }, [])
 
-    const getAllbranchList = async () => {
-        try {
-            const response = await GlobalApi.GetAllBranch();
-            setBranch(response.data);
-            console.log(response.data);
-        } catch (error) {
-            setError(error.message);
+    const getAllbranchList = () => {
+            GlobalApi.GetAllBranch().then(response =>{
+                console.log(response.data)
+                setBranch(response.data)
+            })
         }
-    }
 
-    const onSubmit = async (data) => {
+    const onSubmit = (data) => {
         try {
             setLoading(true);
+            console.log("Data being sent to API:", data); 
+            GlobalApi.CreateNewStudent(data).then(response => {
+                console.log(response);
+            })
             console.log("Form Data", data);
         } catch (error) {
             setError(error.message);
         } finally {
             setLoading(false);
+            reset();
+            setOpen(false);
+
         }
     }
 
@@ -67,7 +71,7 @@ const AddNewStudent = () => {
                                 <div className="py-2">
                                     <label className='text-gray-400'>Roll number</label>
                                     <Input placeholder="ex : 220133155xx"
-                                        {...register('roll_number', { required: true })}
+                                        {...register('rollno', { required: true })}
                                     />
                                     {errors.roll_number && <p className="text-red-500">Roll number is required</p>}
                                 </div>
@@ -78,9 +82,9 @@ const AddNewStudent = () => {
                                         className="p-2 rounded-10 bg-inherit border border-gray-500"
                                         {...register('branch', { required: true })}
                                     >
-                                        {branch.map((item, index) => (
-                                            <option key={index} value={item.branch}>
-                                                {item.branch}
+                                        { branch.map((item, index) => (
+                                            <option key={index} value={item.branchname}>
+                                                {item.branchname}
                                             </option>
                                         ))}
                                     </select>

@@ -30,6 +30,7 @@ const Student = () => {
         Students
         <AddNewStudent/>
       </h2>
+      <StudentList studentList={studentList} />
     </div>
   )
 }

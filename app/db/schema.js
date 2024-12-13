@@ -11,7 +11,7 @@ export const usersTable = pgTable("users", {
 export const STUDENTS = pgTable("students", {
   id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
   name: varchar('name',{ length: 255 }).notNull(),
-  rollno: integer('rno').notNull().unique(),
+  rollno: integer('rno').unique(),
   branch:varchar('branch',{length: 255 }).notNull()
 });
 
